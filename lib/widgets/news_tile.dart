@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 
 class NewsTile extends StatelessWidget {
@@ -7,13 +9,14 @@ class NewsTile extends StatelessWidget {
   final String author;
   final String url_path;
 
-  NewsTile({
+  const NewsTile({
+    Key? key,
     required this.title,
     required this.description,
     required this.date,
     required this.author,
     required this.url_path,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
