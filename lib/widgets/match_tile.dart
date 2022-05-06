@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../models/match.dart';
 
-import '../pages/matchpage.dart';
+import '../pages/match_page.dart';
 
 class MatchTile extends StatelessWidget {
   final List<MatchTeam> teams;

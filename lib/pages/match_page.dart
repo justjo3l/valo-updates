@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/match.dart';
 
-import '../pages/mappage.dart';
+import 'map_page.dart';
 
 class MatchPage extends StatefulWidget {
   final Match data;

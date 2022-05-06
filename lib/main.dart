@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'pages/newspage.dart';
-import 'pages/matchespage.dart';
+import 'pages/news_page.dart';
+import 'pages/matches_page.dart';
 
 void main() => runApp(const MyApp());
 

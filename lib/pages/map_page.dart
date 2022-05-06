@@ -1,6 +1,9 @@
+import 'package:app/widgets/map_table.dart';
 import 'package:flutter/material.dart';
 
 import '../models/match.dart';
+
+import '../widgets/map_table.dart';
 
 class MapPage extends StatefulWidget {
   final Match data;
@@ -48,19 +51,16 @@ class _MapPageState extends State<MapPage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 10),
+              padding: const EdgeInsets.only(top: 20, bottom: 40),
               child: Row(
                 children: [
                   SizedBox(
                     child: Column(
                       children: [
-                        FittedBox(
-                          child: Text(
-                            data.teams.first.name,
-                            style: const TextStyle(fontSize: 20),
-                            textAlign: TextAlign.center,
-                          ),
-                          fit: BoxFit.fitWidth,
+                        Text(
+                          data.teams.first.name,
+                          style: const TextStyle(fontSize: 20),
+                          textAlign: TextAlign.center,
                         ),
                         Text(
                           data.maps[index].score.team1,
@@ -114,6 +114,8 @@ class _MapPageState extends State<MapPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               ),
             ),
+            MapTable(data: data.maps[index].team1),
+            MapTable(data: data.maps[index].team2),
           ],
         ),
       ),
