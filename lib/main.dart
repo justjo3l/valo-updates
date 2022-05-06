@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'pages/newspage.dart';
-import 'pages/matchpage.dart';
+import 'pages/matchespage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MatchPage(),
+      home: const MatchesPage(),
     );
   }
 }

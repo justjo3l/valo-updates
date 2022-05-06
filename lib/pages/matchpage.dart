@@ -1,66 +1,157 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 import '../models/match.dart';
 
-import '../widgets/match_tile.dart';
-
-Future<List<Match>> fetchMatch() async {
-  final response = await http.get(Uri.parse('http://127.0.0.1:5000/match/3'));
-
-  if (response.statusCode == 200) {
-    Iterable l = jsonDecode(response.body)['data'];
-    List<Match> matches =
-        List<Match>.from(l.map((model) => Match.fromJson(model)));
-    return matches;
-  } else {
-    throw Exception('Failed to load Match');
-  }
-}
-
 class MatchPage extends StatefulWidget {
-  const MatchPage({Key? key}) : super(key: key);
+  final Match data;
+
+  MatchPage({Key? key, required this.data}) : super(key: key);
 
   @override
-  _MatchPageState createState() => _MatchPageState();
+  _MatchPageState createState() => _MatchPageState(data: data);
 }
 
 class _MatchPageState extends State<MatchPage> {
-  late Future<List<Match>> futureMatch;
+  final Match data;
+
+  _MatchPageState({required this.data});
 
   @override
   void initState() {
     super.initState();
-    futureMatch = fetchMatch();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fetch Data'),
+        title: FittedBox(
+          child: Text(
+            data.teams.first.name + " vs " + data.teams.last.name,
+            maxLines: 1,
+            textAlign: TextAlign.center,
+          ),
+          fit: BoxFit.fitWidth,
+        ),
+        centerTitle: true,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 8.0),
+            child: Icon(Icons.abc),
+          ),
+        ],
       ),
       body: Center(
-        child: FutureBuilder<List<Match>>(
-          future: futureMatch,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return MatchTile(
-                      teams: snapshot.data!.elementAt(index).teams,
-                      score: snapshot.data!.elementAt(index).score,
-                    );
-                  });
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
-
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
-          },
+        child: Column(
+          children: [
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        data.match.name,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        data.date,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.right,
+                      ),
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Row(
+                    children: [
+                      Text(
+                        data.match.type,
+                        style: const TextStyle(fontSize: 12),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        data.time,
+                        style: const TextStyle(fontSize: 12),
+                        textAlign: TextAlign.right,
+                      ),
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              child: Row(
+                children: [
+                  SizedBox(
+                    child: Column(
+                      children: [
+                        Text(
+                          data.teams.first.name,
+                          style: const TextStyle(fontSize: 16),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          data.score.team1,
+                          style: const TextStyle(
+                              fontSize: 26, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    width: (MediaQuery.of(context).size.width) / 3,
+                  ),
+                  SizedBox(
+                    child: Column(
+                      children: const [
+                        Text(
+                          'vs',
+                          style: TextStyle(fontSize: 14),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          ':',
+                          style: TextStyle(fontSize: 26),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    width: (MediaQuery.of(context).size.width) / 3,
+                  ),
+                  SizedBox(
+                    child: Column(
+                      children: [
+                        Text(
+                          data.teams.last.name,
+                          style: const TextStyle(fontSize: 16),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          data.score.team2,
+                          style: const TextStyle(
+                              fontSize: 26, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    width: (MediaQuery.of(context).size.width) / 3,
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),
+            ),
+          ],
         ),
       ),
     );
