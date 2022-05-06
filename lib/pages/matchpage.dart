@@ -91,7 +91,7 @@ class _MatchPageState extends State<MatchPage> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              padding: const EdgeInsets.only(top: 20, bottom: 10),
               child: Row(
                 children: [
                   SizedBox(
@@ -113,7 +113,7 @@ class _MatchPageState extends State<MatchPage> {
                         ),
                       ],
                     ),
-                    width: (MediaQuery.of(context).size.width) / 3,
+                    width: (MediaQuery.of(context).size.width) / 2.5,
                   ),
                   SizedBox(
                     child: Column(
@@ -130,7 +130,7 @@ class _MatchPageState extends State<MatchPage> {
                         ),
                       ],
                     ),
-                    width: (MediaQuery.of(context).size.width) / 3,
+                    width: (MediaQuery.of(context).size.width) / 5,
                   ),
                   SizedBox(
                     child: Column(
@@ -151,7 +151,7 @@ class _MatchPageState extends State<MatchPage> {
                         ),
                       ],
                     ),
-                    width: (MediaQuery.of(context).size.width) / 3,
+                    width: (MediaQuery.of(context).size.width) / 2.5,
                   ),
                 ],
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
