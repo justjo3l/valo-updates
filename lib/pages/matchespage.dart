@@ -7,7 +7,7 @@ import '../models/match.dart';
 import '../widgets/match_tile.dart';
 
 Future<List<Match>> fetchMatch() async {
-  final response = await http.get(Uri.parse('http://127.0.0.1:5000/match/10'));
+  final response = await http.get(Uri.parse('http://127.0.0.1:5000/matches/3'));
 
   if (response.statusCode == 200) {
     Iterable l = jsonDecode(response.body)['data'];

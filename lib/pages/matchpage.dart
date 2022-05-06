@@ -157,6 +157,23 @@ class _MatchPageState extends State<MatchPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 10),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height / 20,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  itemCount: data.maps.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      child: Text(data.maps.elementAt(index).name),
+                    );
+                  },
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                ),
+              ),
+            ),
           ],
         ),
       ),
