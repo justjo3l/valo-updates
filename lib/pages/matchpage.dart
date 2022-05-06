@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../models/match.dart';
 
+import '../pages/mappage.dart';
+
 class MatchPage extends StatefulWidget {
   final Match data;
 
@@ -160,16 +162,31 @@ class _MatchPageState extends State<MatchPage> {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 10),
               child: SizedBox(
-                height: MediaQuery.of(context).size.height / 20,
+                height: MediaQuery.of(context).size.height / 3,
                 width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   itemCount: data.maps.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      child: Text(data.maps.elementAt(index).name),
+                    return GestureDetector(
+                      child: Center(
+                        child: Padding(
+                          child: SizedBox(
+                            child: Text(data.maps.elementAt(index).name),
+                          ),
+                          padding: EdgeInsets.only(bottom: 60),
+                        ),
+                      ),
+                      onTap: () {
+                        print('Pushed to Map');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  MapPage(data: data, index: index)),
+                        );
+                      },
                     );
                   },
-                  scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                 ),
               ),
