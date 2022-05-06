@@ -97,10 +97,13 @@ class _MatchPageState extends State<MatchPage> {
                   SizedBox(
                     child: Column(
                       children: [
-                        Text(
-                          data.teams.first.name,
-                          style: const TextStyle(fontSize: 16),
-                          textAlign: TextAlign.center,
+                        FittedBox(
+                          child: Text(
+                            data.teams.first.name,
+                            style: const TextStyle(fontSize: 20),
+                            textAlign: TextAlign.center,
+                          ),
+                          fit: BoxFit.fitWidth,
                         ),
                         Text(
                           data.score.team1,
@@ -132,10 +135,13 @@ class _MatchPageState extends State<MatchPage> {
                   SizedBox(
                     child: Column(
                       children: [
-                        Text(
-                          data.teams.last.name,
-                          style: const TextStyle(fontSize: 16),
-                          textAlign: TextAlign.center,
+                        FittedBox(
+                          child: Text(
+                            data.teams.last.name,
+                            style: const TextStyle(fontSize: 20),
+                            textAlign: TextAlign.center,
+                          ),
+                          fit: BoxFit.fitWidth,
                         ),
                         Text(
                           data.score.team2,

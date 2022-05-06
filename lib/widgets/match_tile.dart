@@ -85,7 +85,7 @@ class MatchTile extends StatelessWidget {
             ),
           ),
           const Divider(
-            color: Colors.black,
+            color: Color.fromARGB(255, 1, 1, 1),
           )
         ],
       ),

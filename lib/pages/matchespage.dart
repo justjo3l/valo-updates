@@ -7,7 +7,7 @@ import '../models/match.dart';
 import '../widgets/match_tile.dart';
 
 Future<List<Match>> fetchMatch() async {
-  final response = await http.get(Uri.parse('http://127.0.0.1:5000/match/4'));
+  final response = await http.get(Uri.parse('http://127.0.0.1:5000/match/10'));
 
   if (response.statusCode == 200) {
     Iterable l = jsonDecode(response.body)['data'];
@@ -28,6 +28,7 @@ class MatchesPage extends StatefulWidget {
 
 class _MatchesPageState extends State<MatchesPage> {
   late Future<List<Match>> futureMatch;
+  late String currentDate = "";
 
   @override
   void initState() {
@@ -39,7 +40,7 @@ class _MatchesPageState extends State<MatchesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fetch Data'),
+        title: const Text('Matches'),
       ),
       body: Center(
         child: FutureBuilder<List<Match>>(
