@@ -1,3 +1,5 @@
+// ignore_for_file: no_logic_in_create_state
+
 import 'package:app/widgets/map_table.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +11,7 @@ class MapPage extends StatefulWidget {
   final Match data;
   final int index;
 
-  MapPage({Key? key, required this.data, required this.index})
+  const MapPage({Key? key, required this.data, required this.index})
       : super(key: key);
 
   @override

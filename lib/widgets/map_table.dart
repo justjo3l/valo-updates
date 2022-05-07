@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../models/match.dart';
@@ -7,7 +5,7 @@ import '../models/match.dart';
 class MapTable extends StatelessWidget {
   final List<MatchPlayer> data;
 
-  MapTable({
+  const MapTable({
     Key? key,
     required this.data,
   }) : super(key: key);

@@ -1,3 +1,5 @@
+// ignore_for_file: no_logic_in_create_state, avoid_print
+
 import 'package:flutter/material.dart';
 
 import '../models/match.dart';
@@ -7,7 +9,7 @@ import 'map_page.dart';
 class MatchPage extends StatefulWidget {
   final Match data;
 
-  MatchPage({Key? key, required this.data}) : super(key: key);
+  const MatchPage({Key? key, required this.data}) : super(key: key);
 
   @override
   _MatchPageState createState() => _MatchPageState(data: data);
@@ -173,7 +175,7 @@ class _MatchPageState extends State<MatchPage> {
                           child: SizedBox(
                             child: Text(data.maps.elementAt(index).name),
                           ),
-                          padding: EdgeInsets.only(bottom: 60),
+                          padding: const EdgeInsets.only(bottom: 60),
                         ),
                       ),
                       onTap: () {

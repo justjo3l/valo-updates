@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, avoid_unnecessary_containers
+// ignore_for_file: non_constant_identifier_names, avoid_unnecessary_containers, avoid_print
 
 import 'package:flutter/material.dart';
 
@@ -9,9 +9,9 @@ import '../pages/match_page.dart';
 class MatchTile extends StatelessWidget {
   final List<MatchTeam> teams;
   final MatchScore score;
-  final data;
+  final Match data;
 
-  MatchTile({
+  const MatchTile({
     Key? key,
     required this.teams,
     required this.score,
@@ -91,7 +91,7 @@ class MatchTile extends StatelessWidget {
       ),
       behavior: HitTestBehavior.translucent,
       onTap: () {
-        print('Pushed');
+        print('Pushed to Match');
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => MatchPage(data: data)),
