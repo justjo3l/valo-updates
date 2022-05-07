@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/match.dart';
+import '../models/full_match.dart';
 
 class MapTable extends StatelessWidget {
   final List<MatchPlayer> data;

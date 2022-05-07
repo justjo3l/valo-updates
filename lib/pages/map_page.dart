@@ -3,12 +3,12 @@
 import 'package:app/widgets/map_table.dart';
 import 'package:flutter/material.dart';
 
-import '../models/match.dart';
+import '../models/full_match.dart';
 
 import '../widgets/map_table.dart';
 
 class MapPage extends StatefulWidget {
-  final Match data;
+  final FullMatch data;
   final int index;
 
   const MapPage({Key? key, required this.data, required this.index})
@@ -19,7 +19,7 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  final Match data;
+  final FullMatch data;
   final int index;
 
   _MapPageState({required this.data, required this.index});

@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../models/match.dart';
+import '../models/basic_match.dart';
 
 import '../widgets/match_tile.dart';
 
-Future<List<Match>> fetchMatch() async {
-  final response = await http.get(Uri.parse('http://127.0.0.1:5000/matches/3'));
+Future<List<BasicMatch>> fetchMatch() async {
+  final response =
+      await http.get(Uri.parse('http://127.0.0.1:5000/matches/10'));
 
   if (response.statusCode == 200) {
     Iterable l = jsonDecode(response.body)['data'];
-    List<Match> matches =
-        List<Match>.from(l.map((model) => Match.fromJson(model)));
+    List<BasicMatch> matches =
+        List<BasicMatch>.from(l.map((model) => BasicMatch.fromJson(model)));
     return matches;
   } else {
     throw Exception('Failed to load Match');
@@ -27,7 +28,7 @@ class MatchesPage extends StatefulWidget {
 }
 
 class _MatchesPageState extends State<MatchesPage> {
-  late Future<List<Match>> futureMatch;
+  late Future<List<BasicMatch>> futureMatch;
   late String currentDate = "";
 
   @override
@@ -43,7 +44,7 @@ class _MatchesPageState extends State<MatchesPage> {
         title: const Text('Matches'),
       ),
       body: Center(
-        child: FutureBuilder<List<Match>>(
+        child: FutureBuilder<List<BasicMatch>>(
           future: futureMatch,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
@@ -54,6 +55,7 @@ class _MatchesPageState extends State<MatchesPage> {
                       teams: snapshot.data!.elementAt(index).teams,
                       score: snapshot.data!.elementAt(index).score,
                       data: snapshot.data!.elementAt(index),
+                      index: index,
                     );
                   });
             } else if (snapshot.hasError) {

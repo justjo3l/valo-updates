@@ -2,20 +2,22 @@
 
 import 'package:flutter/material.dart';
 
-import '../models/match.dart';
+import '../models/basic_match.dart';
 
 import '../pages/match_page.dart';
 
 class MatchTile extends StatelessWidget {
   final List<MatchTeam> teams;
   final MatchScore score;
-  final Match data;
+  final BasicMatch data;
+  final int index;
 
   const MatchTile({
     Key? key,
     required this.teams,
     required this.score,
     required this.data,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -94,7 +96,7 @@ class MatchTile extends StatelessWidget {
         print('Pushed to Match');
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => MatchPage(data: data)),
+          MaterialPageRoute(builder: (context) => MatchPage(index: index)),
         );
       },
     );

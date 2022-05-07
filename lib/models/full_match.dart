@@ -179,7 +179,7 @@ class MatchMap {
       };
 }
 
-class Match {
+class FullMatch {
   final MatchTournament tournament;
   final MatchMatch match;
   final String date;
@@ -190,7 +190,7 @@ class Match {
   final List<MatchTeam> teams;
   final List<MatchMap> maps;
 
-  Match.fromJson(Map<String, dynamic> json)
+  FullMatch.fromJson(Map<String, dynamic> json)
       : tournament = MatchTournament.fromJson(json['tournament']),
         match = MatchMatch.fromJson(json['match']),
         date = json['date'],
