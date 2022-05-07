@@ -8,14 +8,12 @@ import '../pages/match_page.dart';
 
 class MatchTile extends StatelessWidget {
   final List<MatchTeam> teams;
-  final MatchScore score;
   final BasicMatch data;
   final int index;
 
   const MatchTile({
     Key? key,
     required this.teams,
-    required this.score,
     required this.data,
     required this.index,
   }) : super(key: key);
@@ -38,7 +36,7 @@ class MatchTile extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        score.team1,
+                        teams.first.score,
                         style: const TextStyle(
                             fontSize: 26, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
@@ -73,7 +71,7 @@ class MatchTile extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        score.team2,
+                        teams.last.score,
                         style: const TextStyle(
                             fontSize: 26, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,

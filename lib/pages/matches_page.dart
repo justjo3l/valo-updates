@@ -53,7 +53,6 @@ class _MatchesPageState extends State<MatchesPage> {
                   itemBuilder: (BuildContext context, int index) {
                     return MatchTile(
                       teams: snapshot.data!.elementAt(index).teams,
-                      score: snapshot.data!.elementAt(index).score,
                       data: snapshot.data!.elementAt(index),
                       index: index,
                     );
